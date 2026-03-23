@@ -1,4 +1,3 @@
-{{ config(materialized='view') }}
 with
 
 source as (
@@ -12,7 +11,7 @@ raw as (
         iso_alpha_3_code
     from source
     where name is not null
-)
+),
 
 final as (
     select * from raw

@@ -1,4 +1,3 @@
-{{ config(materialized='view') }}
 with
 source as (
     select * from {{source('snowflake', 'wb_gdp')}}
@@ -7,7 +6,7 @@ source as (
 raw as (
     select 
         country as country_name,
-        LOWER(type),
+        LOWER(type) as type,
         cast(year as int) as year,
         gdp_nominal_usd as gdp_nominal,
         gdp_real_usd as gdp_real,
@@ -15,12 +14,12 @@ raw as (
     from source
     where country is not null
     and type is not null
-    and LOWER(type) in ["history", "projection"]
+    and LOWER(type) in ('history', 'projection')
     and year is not null
     and year > 0
-    where gdp_nominal_usd > 0
+    and gdp_nominal_usd > 0
     and gdp_real_usd > 0
-)
+),
 
 --making sure no duplicate in combination (country_name, type, year)
 final as (

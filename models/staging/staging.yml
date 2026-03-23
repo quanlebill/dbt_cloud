@@ -81,7 +81,7 @@ models:
         group: gdp
 
     columns:
-      - name: country
+      - name: country_name
         description: Countries name
         data_tests:
           - not_null
@@ -131,7 +131,7 @@ models:
         group: gdp
 
     columns:
-      - name: country
+      - name: country_name
         description: country name
         data_tests:
           - not_null

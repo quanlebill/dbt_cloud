@@ -1,4 +1,3 @@
-{{ config(materialized='view') }}
 with
 
 source as (
@@ -8,7 +7,7 @@ source as (
 raw as (
     select
         country as country_name,
-        LOWER(type),
+        LOWER(type) as type,
         cast(year as int) as year,
         population_change_pct as population_change,
         gdp_ppp_usd as gdp_ppp,
@@ -17,12 +16,12 @@ raw as (
     from source
     where country is not null
     and type is not null
-    and LOWER(type) in ["history", "projection"]
+    and LOWER(type) in ('history', 'projection')
     and year is not null
     and year > 0
     and gdp_ppp_usd > 0
     and gdp_ppp_per_capita_usd > 0
-)
+),
 
 --making sure no duplicate in combination (country_name, type, year)
 final as (
@@ -33,9 +32,9 @@ final as (
         AVG(population_change) as population_change,
         AVG(gdp_ppp) as gdp_ppp,
         AVG(gdp_ppp_per_capita) as gdp_ppp_per_capita,
-        AVG(gdp_ppp_growth) as gdp_ppp_per_growth
+        AVG(gdp_ppp_growth) as gdp_ppp_growth
     from raw
-    group by country_name, type, name
+    group by country_name, type, year
 )
 
 

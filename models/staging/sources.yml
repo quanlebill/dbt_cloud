@@ -84,7 +84,7 @@ sources:
             description: nominal gdp growth rate in %
             config:
               meta:
-                unit: %
+                unit: '%'
                 semantic: quantity
           
           - name: gdp_per_capita_usd
@@ -105,7 +105,7 @@ sources:
             description: population change in %
             config:
               meta:
-                unit: %
+                unit: '%'
                 semantic: quantity
 
       - name: imf_ppp_gdp
@@ -147,7 +147,7 @@ sources:
             description: ppp gdp growth rate in %
             config:
               meta:
-                unit: %
+                unit: '%'
                 semantic: quantity
           
           - name: gdp_ppp_per_capita_usd
@@ -168,7 +168,7 @@ sources:
             description: population change in %
             config:
               meta:
-                unit: %
+                unit: '%'
                 semantic: quantity
 
       - name: wb_gdp
@@ -224,7 +224,7 @@ sources:
             description: population change in %
             config:
               meta:
-                unit: %
+                unit: '%'
                 semantic: quantity
 
               

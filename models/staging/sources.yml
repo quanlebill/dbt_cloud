@@ -1,0 +1,238 @@
+version: 2
+
+sources:
+  - name: snowflake
+    database: STOCKLLM
+    schema: RAW_DATA
+    description: Staging Step Proceeding Raw data from snowflake
+    
+    tables:
+      - name: countries
+        description: Countries name and ISO Alpha 2 and ISO Alpha 3 code 
+        config:
+          meta:
+            field: general 
+            group: country
+        
+        columns:
+          - name: name 
+            description: country name
+            config:
+              meta:
+                unit: none
+                semantic: entity
+            data_tests:
+              - not_null
+              - unique 
+            
+          - name: iso_alpha_2_code
+            description: country ISO Alpha 2 code
+            config:
+              meta:
+                unit: none
+                semantic: entity
+            data_tests:
+              - not_null
+              - unique
+          
+          - name: iso_alpha_3_code
+            description: country ISO Alpha 3 code
+            config:
+              meta:
+                unit: none
+                semantic: entity
+            data_tests:
+              - not_null
+              - unique
+
+      - name: imf_nominal_gdp
+        description: International Nominal GDP
+        config:
+          meta:
+            field: macro
+            group: gdp 
+
+        columns:
+          - name: country
+            description: Countries name
+            config:
+              meta:
+                unit: none
+                semantic: entity
+            data_tests:
+              - not_null
+            
+          - name: year
+            description: time when data is available
+            config:
+              meta:
+                unit: year
+                semantic: time
+            data_tests:
+              - not_null
+            
+          - name: type
+            description: projection or history data
+            config:
+              meta:
+                unit: none
+                semantic: time_category
+            data_tests:
+              - not_null
+      
+          - name: gdp_growth_pct
+            description: nominal gdp growth rate in %
+            config:
+              meta:
+                unit: %
+                semantic: quantity
+          
+          - name: gdp_per_capita_usd
+            description: nominal gdp per capita in usd
+            config:
+              meta:
+                unit: usd
+                semantic: quantity
+            
+          - name: gdp_nominal_usd
+            description: nominal gdp in usd
+            config:
+              meta:
+                unit: usd
+                semantic: quantity
+
+          - name: population_change_pct
+            description: population change in %
+            config:
+              meta:
+                unit: %
+                semantic: quantity
+
+      - name: imf_ppp_gdp
+        description: International power purchase parity gdp
+        config:
+          meta:
+            field: macro
+            group: gdp 
+
+        columns:
+          - name: country
+            description: Countries name
+            config:
+              meta:
+                unit: none
+                semantic: entity
+            data_tests:
+              - not_null
+
+          - name: year
+            description: time when data is available
+            config:
+              meta:
+                unit: none
+                semantic: time
+            data_tests:
+              - not_null
+            
+          - name: type
+            description: projection or history data
+            config:
+              meta:
+                unit: none
+                semantic: time_category
+            data_tests:
+              - not_null
+      
+          - name: gdp_ppp_growth_pct
+            description: ppp gdp growth rate in %
+            config:
+              meta:
+                unit: %
+                semantic: quantity
+          
+          - name: gdp_ppp_per_capita_usd
+            description: ppp gdp per capita in usd
+            config:
+              meta:
+                unit: usd
+                semantic: quantity
+            
+          - name: gdp_ppp_usd
+            description: ppp gdp in usd
+            config:
+              meta:
+                unit: usd
+                semantic: quantity
+
+          - name: population_change_pct
+            description: population change in %
+            config:
+              meta:
+                unit: %
+                semantic: quantity
+
+      - name: wb_gdp
+        description: world bank gdp 
+        config:
+          meta:
+            field: macro
+            group: gdp
+          
+        columns:
+          - name: country
+            description: country name
+            config:
+              meta:
+                unit: none
+                semantic: entity
+            data_tests:
+              - not_null
+          
+          - name: type
+            description: History or Projection data
+            config:
+              meta:
+                unit: none
+                semantic: time_category
+            data_tests:
+              - not_null
+              
+          - name: year 
+            description: time when data is available
+            config:
+              meta:
+                unit: year
+                semantic: time
+            data_tests:
+              - not_null
+            
+          - name: gdp_nominal_usd
+            description: nominal gdp in usd
+            config:
+              meta:
+                unit: usd
+                semantic: quantity
+
+          - name: gdp_real_usd
+            description: real gdp in usd
+            config:
+              meta:
+                unit: usd
+                semantic: quantity
+          
+          - name: population_change_pct
+            description: population change in %
+            config:
+              meta:
+                unit: %
+                semantic: quantity
+
+              
+              
+            
+
+          
+
+                         
+                
+

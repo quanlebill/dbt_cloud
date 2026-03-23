@@ -1,0 +1,169 @@
+version: 2
+
+models:
+  - name: stg_snowflake__countries
+    description: Countries name and ISO Alpha 2 and ISO Alpha 3 code
+    columns:
+      - name: country_name
+        description: country name
+        data_tests:
+          - not_null
+          - unique
+
+      - name: iso_alpha_2_code
+        description: country ISO Alpha 2 code
+        data_tests:
+          - not_null
+          - unique
+
+      - name: iso_alpha_3_code
+        description: country ISO Alpha 3 code
+        data_tests:
+          - not_null
+          - unique
+
+
+  - name: stg_snowflake__imf_nominal_gdp
+    description: International Nominal GDP
+    config:
+      meta:
+        field: macro
+        group: gdp
+
+    columns:
+      - name: country_name
+        description: Countries name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_snowflake__countries')
+                field: country_name
+
+      - name: year
+        description: time when data is available
+        data_tests:
+          - not_null
+
+      - name: type
+        description: projection or history data
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['history', 'projection']
+
+      - name: gdp_growth
+        description: nominal gdp growth rate in %
+        data_tests:
+          - not_null
+
+      - name: gdp_per_capita
+        description: nominal gdp per capita in usd
+        data_tests:
+          - not_null
+
+      - name: gdp_nominal
+        description: nominal gdp in usd
+        data_tests:
+          - not_null
+
+      - name: population_change
+        description: population change in %
+        data_tests:
+          - not_null
+
+  - name: stg_snowflake__imf_ppp_gdp
+    description: International power purchase parity gdp
+    config:
+      meta:
+        field: macro
+        group: gdp
+
+    columns:
+      - name: country
+        description: Countries name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_snowflake__countries')
+                field: country_name
+
+      - name: year
+        description: time when data is available
+        data_tests:
+          - not_null
+
+      - name: type
+        description: projection or history data
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [ 'history', 'projection' ]
+
+      - name: gdp_ppp_growth
+        description: ppp gdp growth rate in %
+        data_tests:
+          - not_null
+
+      - name: gdp_ppp_per_capita
+        description: ppp gdp per capita in usd
+        data_tests:
+          - not_null
+
+      - name: gdp_ppp
+        description: ppp gdp in usd
+        data_tests:
+          - not_null
+
+      - name: population_change
+        description: population change in %
+        data_tests:
+          - not_null
+
+  - name: stg_snowflake__wb_gdp
+    description: world bank gdp
+    config:
+      meta:
+        field: macro
+        group: gdp
+
+    columns:
+      - name: country
+        description: country name
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_snowflake__countries')
+                field: country_name
+
+      - name: type
+        description: History or Projection data
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [ 'history', 'projection' ]
+
+      - name: year
+        description: time when data is available
+        data_tests:
+          - not_null
+
+      - name: gdp_nominal
+        description: nominal gdp in usd
+        data_tests:
+          - not_null
+
+      - name: gdp_real
+        description: real gdp in usd
+        data_tests:
+          - not_null
+
+      - name: population_change
+        description: population change in %
+        data_tests:
+          - not_null

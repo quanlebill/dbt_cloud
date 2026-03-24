@@ -6,7 +6,7 @@ source as (
 
 raw as (
     select
-        country as country_name,
+        LOWER(country) as country_name,
         LOWER(type) as type,
         cast(year as int) as year,
         population_change_pct as population_change,
@@ -21,6 +21,7 @@ raw as (
     and year > 0
     and gdp_ppp_usd > 0
     and gdp_ppp_per_capita_usd > 0
+    order by year
 ),
 
 --making sure no duplicate in combination (country_name, type, year)

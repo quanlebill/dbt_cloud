@@ -5,7 +5,7 @@ source as (
 
 raw as (
     select 
-        country as country_name,
+        LOWER(country) as country_name,
         LOWER(type) as type,
         cast(year as int) as year,
         gdp_nominal_usd as gdp_nominal,
@@ -19,6 +19,7 @@ raw as (
     and year > 0
     and gdp_nominal_usd > 0
     and gdp_real_usd > 0
+    order by year
 ),
 
 --making sure no duplicate in combination (country_name, type, year)

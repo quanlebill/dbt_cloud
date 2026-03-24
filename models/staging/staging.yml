@@ -25,11 +25,6 @@ models:
 
   - name: stg_snowflake__imf_nominal_gdp
     description: International Nominal GDP
-    config:
-      meta:
-        field: macro
-        group: gdp
-
     columns:
       - name: country_name
         description: Countries name
@@ -58,7 +53,7 @@ models:
         data_tests:
           - not_null
 
-      - name: gdp_per_capita
+      - name: gdp_nominal_per_capita
         description: nominal gdp per capita in usd
         data_tests:
           - not_null
@@ -75,10 +70,6 @@ models:
 
   - name: stg_snowflake__imf_ppp_gdp
     description: International power purchase parity gdp
-    config:
-      meta:
-        field: macro
-        group: gdp
 
     columns:
       - name: country_name
@@ -89,6 +80,7 @@ models:
               arguments:
                 to: ref('stg_snowflake__countries')
                 field: country_name
+
 
       - name: year
         description: time when data is available
@@ -125,11 +117,6 @@ models:
 
   - name: stg_snowflake__wb_gdp
     description: world bank gdp
-    config:
-      meta:
-        field: macro
-        group: gdp
-
     columns:
       - name: country_name
         description: country name

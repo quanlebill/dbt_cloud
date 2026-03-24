@@ -1,0 +1,18 @@
+models:
+  - name: pp_snowflake__countries
+    columns:
+      - name: country_name
+      - name: iso_alpha_2_code
+      - name: iso_alpha_3_code
+
+  - name: pp_snowflake__gdp
+    columns:
+      - name: country_name
+      - name: type
+      - name: year
+      - name: gdp_nominal
+      - name: gdp_nominal_per_capita
+      - name: gdp_ppp
+      - name: gdp_ppp_per_capita
+      - name: gdp_real
+      - name: population_change

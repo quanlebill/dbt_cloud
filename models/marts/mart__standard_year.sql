@@ -4,7 +4,7 @@ year_spine as (
     {{
         dbt_utils.date_spine(
             datepart = 'year',
-            start_date = "date_trunc('year', dateadd(year, -5, current_timestamp()))",
+            start_date = "date_trunc('year', dateadd(year, -50, current_timestamp()))",
             end_date = "date_trunc('year', current_timestamp())"
         )
     }}

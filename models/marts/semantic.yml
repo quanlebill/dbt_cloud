@@ -1,4 +1,12 @@
 models:
+  - name: mart__standard_year
+    description: time spine yearly
+    time_spine:
+      standard_granularity_column: order_year
+    columns:
+      - name: order_year
+        granularity: year
+
   - name: mart__countries
     semantic_model:
       enabled: true
@@ -17,15 +25,6 @@ models:
         entity:
             name: iso_alpha_3_code
             type: unique
-
-
-  - name: mart__standard_year
-    description: time spine yearly
-    time_spine:
-      standard_granularity_column: order_year
-    columns:
-      - name: order_year
-        granularity: year
 
   - name: mart__gdp
     semantic_model:
@@ -46,6 +45,9 @@ models:
         granularity: year
         dimension:
           type: time
+        config:
+          meta:
+            unit: year
 
       - name: type
         dimension:
@@ -58,6 +60,9 @@ models:
         expr: gdp_nominal
         join_to_timespine: true
         agg_time_dimension: order_year
+        config:
+          meta:
+            unit: usd
 
       - name: average_gdp_growth
         type: simple
@@ -65,6 +70,9 @@ models:
         expr: gdp_growth
         join_to_timespine: true
         agg_time_dimension: order_year
+        config:
+          meta:
+            unit: percentage
 
       - name: average_gdp_ppp
         type: simple
@@ -72,6 +80,9 @@ models:
         expr: gdp_ppp
         join_to_timespine: true
         agg_time_dimension: order_year
+        config:
+          meta:
+            unit: usd
 
       - name: average_gdp_nominal_per_capita
         type: simple
@@ -79,6 +90,9 @@ models:
         expr: gdp_nominal_per_capita
         join_to_timespine: true
         agg_time_dimension: order_year
+        config:
+          meta:
+            unit: usd per person
 
       - name: average_gdp_ppp_per_capita
         type: simple
@@ -86,6 +100,9 @@ models:
         expr: gdp_ppp_per_capita
         join_to_timespine: true
         agg_time_dimension: order_year
+        config:
+          meta:
+            unit: usd per person
 
       - name: average_gdp_real
         type: simple
@@ -93,4 +110,7 @@ models:
         expr: gdp_real
         join_to_timespine: true
         agg_time_dimension: order_year
+        config:
+          meta:
+            unit: usd per person
 

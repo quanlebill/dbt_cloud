@@ -6,6 +6,7 @@ t10y3m_src as (select * from {{ source('fred', 't10y3m') }}),
 
 spread_10y2y as (
     select
+        lower(country)       as country_name,
         cast(date as date)   as observation_date,
         cast(value as float) as spread_10y_2y
     from t10y2y_src
@@ -14,6 +15,7 @@ spread_10y2y as (
 
 spread_10y3m as (
     select
+        lower(country)       as country_name,
         cast(date as date)   as observation_date,
         cast(value as float) as spread_10y_3m
     from t10y3m_src
@@ -22,6 +24,7 @@ spread_10y3m as (
 
 final as (
     select
+        coalesce(a.country_name, b.country_name)         as country_name,
         coalesce(a.observation_date, b.observation_date) as observation_date,
         a.spread_10y_2y,
         b.spread_10y_3m

@@ -7,7 +7,8 @@ source as (
 
 final as (
     select
-        cast(observation_date as varchar)                          as inflation_pii,
+        cast(observation_date as varchar)                             as inflation_pii,
+        country_name,
         cast(date_trunc('month', observation_date) as timestamp_ntz) as observation_date,
         cpi_level,
         core_cpi_level,

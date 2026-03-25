@@ -7,6 +7,7 @@ models:
 
   - name: pp_snowflake__gdp
     columns:
+      - name: gdp_pii
       - name: country_name
       - name: type
       - name: year
@@ -16,3 +17,4 @@ models:
       - name: gdp_ppp_per_capita
       - name: gdp_real
       - name: population_change
+      - name: gdp_growth

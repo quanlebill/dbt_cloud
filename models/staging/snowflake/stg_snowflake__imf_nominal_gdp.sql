@@ -8,7 +8,7 @@ raw as (
     select
         LOWER(country) as country_name,
         LOWER(type) as type,
-        cast(year as int) as year,
+        cast(year as int) as order_year,
         population_change_pct as population_change,
         gdp_nominal_usd as gdp_nominal,
         gdp_per_capita_usd as gdp_nominal_per_capita,
@@ -27,14 +27,13 @@ final as (
     select
         country_name,
         type,
-        year,
+        order_year,
         AVG(population_change) as population_change,
         AVG(gdp_nominal) as gdp_nominal,
         AVG(gdp_nominal_per_capita) as gdp_nominal_per_capita,
         AVG(gdp_growth) as gdp_growth
     from raw
-    group by country_name, type, year
-    order by year
+    group by country_name, type, order_year
 )
 
 select * from final

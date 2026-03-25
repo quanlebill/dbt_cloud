@@ -35,7 +35,7 @@ models:
                 to: ref('stg_snowflake__countries')
                 field: country_name
 
-      - name: year
+      - name: order_year
         description: time when data is available
         data_tests:
           - not_null
@@ -82,7 +82,7 @@ models:
                 field: country_name
 
 
-      - name: year
+      - name: order_year
         description: time when data is available
         data_tests:
           - not_null
@@ -135,7 +135,7 @@ models:
               arguments:
                 values: [ 'history', 'projection' ]
 
-      - name: year
+      - name: order_year
         description: time when data is available
         data_tests:
           - not_null

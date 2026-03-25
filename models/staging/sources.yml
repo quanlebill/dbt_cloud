@@ -62,7 +62,7 @@ sources:
             data_tests:
               - not_null
             
-          - name: year
+          - name: order_year
             description: time when data is available
             config:
               meta:
@@ -125,7 +125,7 @@ sources:
             data_tests:
               - not_null
 
-          - name: year
+          - name: order_year
             description: time when data is available
             config:
               meta:
@@ -197,7 +197,7 @@ sources:
             data_tests:
               - not_null
               
-          - name: year 
+          - name: order_year
             description: time when data is available
             config:
               meta:

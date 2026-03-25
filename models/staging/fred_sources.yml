@@ -1,0 +1,197 @@
+version: 2
+
+sources:
+  - name: fred
+    database: STOCKLLM
+    schema: RAW_DATA
+    description: Raw FRED (Federal Reserve Economic Data) observations uploaded from FRED API
+
+    tables:
+      # ── CPI / Inflation ───────────────────────────────────────────────────────
+      - name: cpiaucsl
+        description: "CPI All Urban Consumers - Headline (monthly, BLS). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: CPI index level (Index 1982-1984=100)
+
+      - name: cpilfesl
+        description: "CPI All Items Less Food and Energy - Core CPI (monthly, BLS). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Core CPI index level (Index 1982-1984=100)
+
+      - name: pcepi
+        description: "PCE Chain-type Price Index - Headline (monthly, BEA). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: PCE index level (Index 2017=100)
+
+      - name: pcepilfe
+        description: "PCE Excluding Food and Energy - Core PCE (monthly, BEA). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Core PCE index level (Index 2017=100)
+
+      - name: pcetrim12m159sfrbdal
+        description: "Trimmed Mean PCE Inflation Rate 12-month (monthly, Dallas Fed). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Trimmed Mean PCE YoY in %
+
+      - name: medcpim159sfrbcle
+        description: "Median CPI YoY (monthly, Cleveland Fed). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Median CPI YoY in %
+
+      - name: ppiaco
+        description: "Producer Price Index All Commodities (monthly, BLS). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: PPI index level (Index 1982=100)
+
+      # ── Fed Funds Interest Rates ──────────────────────────────────────────────
+      - name: fedfunds
+        description: "Federal Funds Effective Rate - monthly average (Federal Reserve). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Monthly average effective federal funds rate in %
+
+      - name: dff
+        description: "Federal Funds Effective Rate - daily (Federal Reserve). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Daily effective federal funds rate in %
+
+      - name: dfedtarl
+        description: "Federal Funds Target Range - Lower Limit (daily, Federal Reserve). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: FOMC lower bound target rate in %
+
+      - name: dfedtaru
+        description: "Federal Funds Target Range - Upper Limit (daily, Federal Reserve). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: FOMC upper bound target rate in %
+
+      # ── Non-Farm Payroll ──────────────────────────────────────────────────────
+      - name: payems
+        description: "All Employees Total Nonfarm Payrolls (monthly, BLS). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Total nonfarm payrolls in Thousands of Persons
+
+      # ── Consumer Confidence ───────────────────────────────────────────────────
+      - name: umcsent
+        description: "University of Michigan Consumer Sentiment Index (monthly). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: Consumer sentiment index level (Index 1966:Q1=100)
+
+      # ── Yield Curve ───────────────────────────────────────────────────────────
+      - name: dgs1mo
+        description: "Treasury Yield 1-Month Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 1-Month Treasury yield in %
+
+      - name: dgs3mo
+        description: "Treasury Yield 3-Month Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 3-Month Treasury yield in %
+
+      - name: dgs6mo
+        description: "Treasury Yield 6-Month Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 6-Month Treasury yield in %
+
+      - name: dgs1
+        description: "Treasury Yield 1-Year Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 1-Year Treasury yield in %
+
+      - name: dgs2
+        description: "Treasury Yield 2-Year Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 2-Year Treasury yield in %
+
+      - name: dgs5
+        description: "Treasury Yield 5-Year Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 5-Year Treasury yield in %
+
+      - name: dgs10
+        description: "Treasury Yield 10-Year Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 10-Year Treasury yield in %
+
+      - name: dgs30
+        description: "Treasury Yield 30-Year Constant Maturity (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 30-Year Treasury yield in %
+
+      - name: t10y2y
+        description: "10-Year minus 2-Year Treasury Yield Spread (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 10Y minus 2Y spread in % (negative = inverted)
+
+      - name: t10y3m
+        description: "10-Year minus 3-Month Treasury Yield Spread (daily). Columns: date, value"
+        columns:
+          - name: date
+            data_tests: [not_null]
+          - name: value
+            description: 10Y minus 3M spread in % (negative = inverted)

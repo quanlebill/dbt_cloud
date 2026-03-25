@@ -1,31 +1,4 @@
 models:
-  - name: mart__standard_year
-    description: time spine yearly
-    time_spine:
-      standard_granularity_column: order_year
-    columns:
-      - name: order_year
-        granularity: year
-
-  - name: mart__countries
-    semantic_model:
-      enabled: true
-      name: countries_standard_name_and_code
-    columns:
-      - name: country_name
-        entity:
-          name: country_name
-          type: primary
-
-      - name: iso_alpha_2_code
-        entity:
-          name: iso_alpha_2_code
-          type: unique
-      - name: iso_alpha_3_code
-        entity:
-            name: iso_alpha_3_code
-            type: unique
-
   - name: mart__gdp
     semantic_model:
       enabled: true

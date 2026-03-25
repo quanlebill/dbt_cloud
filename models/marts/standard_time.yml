@@ -1,0 +1,8 @@
+models:
+  - name: mart__standard_year
+    description: time spine yearly
+    time_spine:
+      standard_granularity_column: order_year
+    columns:
+      - name: order_year
+        granularity: year

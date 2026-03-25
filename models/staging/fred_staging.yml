@@ -1,0 +1,125 @@
+version: 2
+
+models:
+  # ── CPI / Inflation (monthly) ─────────────────────────────────────────────────
+  - name: stg_fred__cpi
+    description: CPI Headline monthly level standardized to month-start date
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: cpi_level
+        data_tests: [not_null]
+
+  - name: stg_fred__core_cpi
+    description: Core CPI monthly level standardized to month-start date
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: core_cpi_level
+        data_tests: [not_null]
+
+  - name: stg_fred__pce
+    description: PCE Headline monthly level standardized to month-start date
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: pce_level
+        data_tests: [not_null]
+
+  - name: stg_fred__core_pce
+    description: Core PCE monthly level standardized to month-start date
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: core_pce_level
+        data_tests: [not_null]
+
+  - name: stg_fred__trimmed_mean_pce
+    description: Trimmed Mean PCE 12-month YoY rate standardized to month-start date
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: trimmed_mean_pce_yoy
+        data_tests: [not_null]
+
+  - name: stg_fred__median_cpi
+    description: Median CPI YoY rate standardized to month-start date
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: median_cpi_yoy
+        data_tests: [not_null]
+
+  - name: stg_fred__ppi
+    description: PPI All Commodities monthly level standardized to month-start date
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: ppi_level
+        data_tests: [not_null]
+
+  # ── Fed Funds Interest Rates ──────────────────────────────────────────────────
+  - name: stg_fred__fed_funds_monthly
+    description: Federal Funds Effective Rate monthly average
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: fed_funds_rate
+        data_tests: [not_null]
+
+  - name: stg_fred__fed_funds_daily
+    description: Federal Funds Effective Rate daily
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: fed_funds_rate
+        data_tests: [not_null]
+
+  - name: stg_fred__fed_funds_target
+    description: FOMC target rate corridor (lower and upper limits) daily
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: target_lower
+      - name: target_upper
+
+  # ── Non-Farm Payroll ──────────────────────────────────────────────────────────
+  - name: stg_fred__nonfarm_payrolls
+    description: Total nonfarm payrolls monthly level
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: payrolls_level
+        data_tests: [not_null]
+
+  # ── Consumer Confidence ───────────────────────────────────────────────────────
+  - name: stg_fred__consumer_sentiment
+    description: University of Michigan Consumer Sentiment Index monthly
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: consumer_sentiment
+        data_tests: [not_null]
+
+  # ── Yield Curve (daily) ───────────────────────────────────────────────────────
+  - name: stg_fred__treasury_yield_curve
+    description: Daily Treasury yields across 8 constant maturities (1M through 30Y)
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: y1m
+      - name: y3m
+      - name: y6m
+      - name: y1
+      - name: y2
+      - name: y5
+      - name: y10
+      - name: y30
+
+  - name: stg_fred__yield_curve_spreads
+    description: Daily 10Y-2Y and 10Y-3M Treasury yield spreads (recession indicators)
+    columns:
+      - name: observation_date
+        data_tests: [not_null, unique]
+      - name: spread_10y_2y
+      - name: spread_10y_3m

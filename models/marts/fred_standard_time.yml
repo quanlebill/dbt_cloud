@@ -1,0 +1,16 @@
+models:
+  - name: mart__standard_month
+    description: Monthly time spine from 1947-01-01 to current month
+    time_spine:
+      standard_granularity_column: order_month
+    columns:
+      - name: order_month
+        granularity: month
+
+  - name: mart__standard_day
+    description: Daily time spine from 1962-01-01 to current date
+    time_spine:
+      standard_granularity_column: order_day
+    columns:
+      - name: order_day
+        granularity: day

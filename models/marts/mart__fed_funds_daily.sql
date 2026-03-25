@@ -7,8 +7,9 @@ source as (
 
 final as (
     select
-        cast(observation_date as varchar)          as fed_funds_daily_pii,
-        cast(observation_date as timestamp_ntz)    as observation_date,
+        cast(observation_date as varchar)       as fed_funds_daily_pii,
+        country_name,
+        cast(observation_date as timestamp_ntz) as observation_date,
         fed_funds_rate,
         target_lower,
         target_upper

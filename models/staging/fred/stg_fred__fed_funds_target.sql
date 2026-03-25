@@ -11,6 +11,7 @@ upper_src as (
 
 lower_raw as (
     select
+        lower(country)       as country_name,
         cast(date as date)   as observation_date,
         cast(value as float) as target_lower
     from lower_src
@@ -22,6 +23,7 @@ lower_raw as (
 
 upper_raw as (
     select
+        lower(country)       as country_name,
         cast(date as date)   as observation_date,
         cast(value as float) as target_upper
     from upper_src
@@ -33,6 +35,7 @@ upper_raw as (
 
 final as (
     select
+        coalesce(l.country_name, u.country_name)         as country_name,
         coalesce(l.observation_date, u.observation_date) as observation_date,
         l.target_lower,
         u.target_upper

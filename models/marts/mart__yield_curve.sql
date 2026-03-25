@@ -8,6 +8,7 @@ source as (
 final as (
     select
         cast(observation_date as varchar)       as yield_curve_pii,
+        country_name,
         cast(observation_date as timestamp_ntz) as observation_date,
         y1m,
         y3m,

@@ -8,6 +8,7 @@ source as (
 final as (
     select
         cast(observation_date as varchar)                             as nonfarm_pii,
+        country_name,
         cast(date_trunc('month', observation_date) as timestamp_ntz) as observation_date,
         payrolls_level
     from source

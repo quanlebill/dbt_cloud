@@ -10,9 +10,8 @@ source as (
 
 final as (
     select
-        source.*
+        *
     from source
-    inner join time_spine on source.order_year = time_spine.order_year
 )
 
 select * from final

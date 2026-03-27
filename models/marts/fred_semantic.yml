@@ -255,80 +255,80 @@ models:
             unit: day
 
     metrics:
-      - name: average_y1m
+      - name: average_yield_1mo
         type: simple
         agg: average
-        expr: y1m
+        expr: yield_1mo
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:
           meta:
             unit: "%"
 
-      - name: average_y3m
+      - name: average_yield_3mo
         type: simple
         agg: average
-        expr: y3m
+        expr: yield_3mo
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:
           meta:
             unit: "%"
 
-      - name: average_y6m
+      - name: average_yield_6mo
         type: simple
         agg: average
-        expr: y6m
+        expr: yield_6mo
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:
           meta:
             unit: "%"
 
-      - name: average_y1
+      - name: average_yield_1y
         type: simple
         agg: average
-        expr: y1
+        expr: yield_1y
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:
           meta:
             unit: "%"
 
-      - name: average_y2
+      - name: average_yield_2y
         type: simple
         agg: average
-        expr: y2
+        expr: yield_2y
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:
           meta:
             unit: "%"
 
-      - name: average_y5
+      - name: average_yield_5y
         type: simple
         agg: average
-        expr: y5
+        expr: yield_5y
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:
           meta:
             unit: "%"
 
-      - name: average_y10
+      - name: average_yield_10y
         type: simple
         agg: average
-        expr: y10
+        expr: yield_10y
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:
           meta:
             unit: "%"
 
-      - name: average_y30
+      - name: average_yield_30y
         type: simple
         agg: average
-        expr: y30
+        expr: yield_30y
         join_to_timespine: true
         agg_time_dimension: observation_date
         config:

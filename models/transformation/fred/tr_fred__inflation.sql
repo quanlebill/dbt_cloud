@@ -1,16 +1,15 @@
--- All 7 inflation series are monthly; joined on country_name + observation_date into one wide table
+-- All 7 monthly inflation series joined on country_name + observation_date into one wide table
 with
 
-cpi          as (select * from {{ ref('stg_fred__cpi') }}),
-core_cpi     as (select * from {{ ref('stg_fred__core_cpi') }}),
-pce          as (select * from {{ ref('stg_fred__pce') }}),
-core_pce     as (select * from {{ ref('stg_fred__core_pce') }}),
-trimmed_pce  as (select * from {{ ref('stg_fred__trimmed_mean_pce') }}),
-median_cpi   as (select * from {{ ref('stg_fred__median_cpi') }}),
-ppi          as (select * from {{ ref('stg_fred__ppi') }}),
-countries    as (select * from {{ ref('pp_snowflake__countries') }}),
+cpi          as (select * from {{ ref('pp_fred__cpi') }}),
+core_cpi     as (select * from {{ ref('pp_fred__core_cpi') }}),
+pce          as (select * from {{ ref('pp_fred__pce') }}),
+core_pce     as (select * from {{ ref('pp_fred__core_pce') }}),
+trimmed_pce  as (select * from {{ ref('pp_fred__trimmed_mean_pce') }}),
+median_cpi   as (select * from {{ ref('pp_fred__median_cpi') }}),
+ppi          as (select * from {{ ref('pp_fred__ppi') }}),
 
-stage as (
+final as (
     select
         coalesce(
             cpi.country_name, core_cpi.country_name, pce.country_name,
@@ -42,25 +41,6 @@ stage as (
                          and cpi.observation_date = median_cpi.observation_date
     full join ppi         on cpi.country_name = ppi.country_name
                          and cpi.observation_date = ppi.observation_date
-),
-
-final as (
-    select
-        countries.country_name,
-        stage.observation_date,
-        stage.cpi_level,
-        stage.core_cpi_level,
-        stage.pce_level,
-        stage.core_pce_level,
-        stage.trimmed_mean_pce_yoy,
-        stage.median_cpi_yoy,
-        stage.ppi_level
-    from stage
-    join countries on (
-        stage.country_name = countries.country_name
-        or stage.country_name = countries.iso_alpha_2_code
-        or stage.country_name = countries.iso_alpha_3_code
-    )
 )
 
 select * from final

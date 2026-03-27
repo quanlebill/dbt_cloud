@@ -1,0 +1,166 @@
+models:
+  # ── CPI / Inflation — one model per series ────────────────────────────────────
+  - name: pp_fred__cpi
+    description: CPI Headline with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: cpi_level
+
+  - name: pp_fred__core_cpi
+    description: Core CPI with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: core_cpi_level
+
+  - name: pp_fred__pce
+    description: PCE Headline with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: pce_level
+
+  - name: pp_fred__core_pce
+    description: Core PCE with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: core_pce_level
+
+  - name: pp_fred__trimmed_mean_pce
+    description: Trimmed Mean PCE YoY with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: trimmed_mean_pce_yoy
+
+  - name: pp_fred__median_cpi
+    description: Median CPI YoY with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: median_cpi_yoy
+
+  - name: pp_fred__ppi
+    description: PPI All Commodities with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: ppi_level
+
+  # ── Fed Funds — one model per series ──────────────────────────────────────────
+  - name: pp_fred__fed_funds_daily
+    description: Daily fed funds effective rate with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: fed_funds_rate
+
+  - name: pp_fred__fed_funds_monthly
+    description: Monthly fed funds effective rate with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: fed_funds_rate
+
+  - name: pp_fred__fed_funds_target_lower
+    description: FOMC daily target lower bound with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: target_lower
+
+  - name: pp_fred__fed_funds_target_upper
+    description: FOMC daily target upper bound with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: target_upper
+
+  # ── Non-Farm Payroll ──────────────────────────────────────────────────────────
+  - name: pp_fred__nonfarm_payrolls
+    description: Monthly nonfarm payrolls with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: payrolls_level
+
+  # ── Consumer Confidence ───────────────────────────────────────────────────────
+  - name: pp_fred__consumer_sentiment
+    description: Monthly consumer sentiment with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: consumer_sentiment
+
+  # ── Yield Curve — one model per maturity ──────────────────────────────────────
+  - name: pp_fred__dgs1mo
+    description: 1-Month Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_1mo
+
+  - name: pp_fred__dgs3mo
+    description: 3-Month Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_3mo
+
+  - name: pp_fred__dgs6mo
+    description: 6-Month Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_6mo
+
+  - name: pp_fred__dgs1y
+    description: 1-Year Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_1y
+
+  - name: pp_fred__dgs2y
+    description: 2-Year Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_2y
+
+  - name: pp_fred__dgs5y
+    description: 5-Year Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_5y
+
+  - name: pp_fred__dgs10y
+    description: 10-Year Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_10y
+
+  - name: pp_fred__dgs30y
+    description: 30-Year Treasury yield with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_30y
+
+  - name: pp_fred__t10y2y
+    description: 10Y-2Y spread with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: spread_10y_2y
+
+  - name: pp_fred__t10y3m
+    description: 10Y-3M spread with standardized country_name
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: spread_10y_3m

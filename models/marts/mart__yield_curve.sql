@@ -2,7 +2,7 @@
 with
 
 source as (
-    select * from {{ ref('pp_fred__yield_curve') }}
+    select * from {{ ref('tr_fred__yield_curve') }}
 ),
 
 final as (
@@ -10,14 +10,14 @@ final as (
         cast(observation_date as varchar)       as yield_curve_pii,
         country_name,
         cast(observation_date as timestamp_ntz) as observation_date,
-        y1m,
-        y3m,
-        y6m,
-        y1,
-        y2,
-        y5,
-        y10,
-        y30,
+        yield_1mo,
+        yield_3mo,
+        yield_6mo,
+        yield_1y,
+        yield_2y,
+        yield_5y,
+        yield_10y,
+        yield_30y,
         spread_10y_2y,
         spread_10y_3m
     from source

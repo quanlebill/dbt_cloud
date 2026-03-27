@@ -1,13 +1,13 @@
 with
 
-source    as (select * from {{ ref('stg_fred__fed_funds_daily') }}),
+source    as (select * from {{ ref('stg_fred__dgs2y') }}),
 countries as (select * from {{ ref('pp_snowflake__countries') }}),
 
 final as (
     select
         countries.country_name,
         source.observation_date,
-        source.fed_funds_rate
+        source.yield_2y
     from source
     join countries on (
         source.country_name = countries.country_name

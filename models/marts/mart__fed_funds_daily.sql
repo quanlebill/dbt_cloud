@@ -2,7 +2,7 @@
 with
 
 source as (
-    select * from {{ ref('pp_fred__fed_funds_daily') }}
+    select * from {{ ref('tr_fred__fed_funds_daily') }}
 ),
 
 final as (

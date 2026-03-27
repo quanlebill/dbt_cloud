@@ -1,0 +1,38 @@
+models:
+  - name: tr_fred__inflation
+    description: Monthly inflation wide table — all 7 FRED inflation series joined on country_name + observation_date
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: cpi_level
+      - name: core_cpi_level
+      - name: pce_level
+      - name: core_pce_level
+      - name: trimmed_mean_pce_yoy
+      - name: median_cpi_yoy
+      - name: ppi_level
+
+  - name: tr_fred__fed_funds_daily
+    description: Daily fed funds effective rate with FOMC target corridor (lower + upper)
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: fed_funds_rate
+      - name: target_lower
+      - name: target_upper
+
+  - name: tr_fred__yield_curve
+    description: Daily Treasury yield curve (8 maturities) with 10Y-2Y and 10Y-3M recession spreads
+    columns:
+      - name: country_name
+      - name: observation_date
+      - name: yield_1mo
+      - name: yield_3mo
+      - name: yield_6mo
+      - name: yield_1y
+      - name: yield_2y
+      - name: yield_5y
+      - name: yield_10y
+      - name: yield_30y
+      - name: spread_10y_2y
+      - name: spread_10y_3m

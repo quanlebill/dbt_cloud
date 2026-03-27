@@ -2,7 +2,7 @@
 with
 
 source as (
-    select * from {{ ref('pp_fred__inflation') }}
+    select * from {{ ref('tr_fred__inflation') }}
 ),
 
 final as (
